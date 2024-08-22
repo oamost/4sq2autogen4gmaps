@@ -1,14 +1,18 @@
-# samples
+# Samples
 
-## generated KML output sample:
+## Utility usage:
+
+![image](https://github.com/user-attachments/assets/8f5b25e4-4a2e-4eca-bade-2a5ecd605145)
+
+## Generated output:
 
 ![image](https://github.com/user-attachments/assets/2107ef94-7a41-44be-a690-ba682fb00103)
 
-## usage sample on Google My Maps:
+## Google Maps use case:
 
 ![image](https://github.com/user-attachments/assets/5f9aea1b-7eee-4d4d-bbc4-c169d38df148)
 
-# how-to use
+# How-to use it?
 
 1. go to https://foursquare.com/developers/home
 2. create a new project
