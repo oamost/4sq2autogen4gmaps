@@ -13,10 +13,10 @@
 1. go to https://foursquare.com/developers/home
 2. create a new project
 3. copy `Client Id` and `Client Secret` into a notepad for later use - can be found under the newly created project's Settings.
-4. don't forget to fill redirect URL, which most be `https://www.example.com`
+4. don't forget to fill redirect URL, which must be `https://www.example.com`
 5. clone this repo
 6. open `./src/Authentication.html` and authorize your newly created app with your Foursquare account
-7. you will be redirected to `example.com/code=COPY_THIS_PART` <- this will expire after a few minutes, recommended to generate it after step #9
+7. you will be redirected to `example.com/code=COPY_THIS_PART` <- This will expire after a few minutes, recommended to generate it after step #9
 8. `$ dotnet build`
 9. `$ ./bin/Debug/net8.0/4sq2autogen4gmaps`
 10. paste generated `Code` into the console app
