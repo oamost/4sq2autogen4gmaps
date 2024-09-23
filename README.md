@@ -14,19 +14,34 @@
 
 # How-to use it?
 
-1. go to https://foursquare.com/developers/home
-2. create a new project
-3. copy `Client Id` and `Client Secret` into a notepad for later use - can be found under the newly created project's Settings.
-4. don't forget to fill redirect URL, which must be `https://www.example.com`
-5. clone this repo
-6. open `./src/Authentication.html` and authorize your newly created app with your Foursquare account
-7. you will be redirected to `example.com/code=COPY_THIS_PART` <- This will expire after a few minutes, recommended to generate it after step #9
-8. `$ dotnet build`
-9. `$ ./bin/Debug/net8.0/4sq2autogen4gmaps`
-10. paste generated `Code` into the console app
-11. paste `Client Id` into the console app
-12. paste `Client Secret` into the console app
-13. wait for the generation to be finished
-14. open https://www.google.com/maps/d/u/0/?hl=en and create your new map
-15. click on "New Layer", then click on `Import` and browse the `.kml` file located in the repo
-16. the rest is straightforward - you can set a few map styles and you can set the venue labels to be shown on Google My Maps
+You will need dotnet-sdk-bin for building the project.
+You can build it with dotnet restore && dotnet run
+
+1. Start the built 4sq2autogen4gmaps utility and open Authenticate.html from src in your browser
+   You will paste the "access code" from step 1-7 here
+   
+2. Create new project after logged into fsq/developer interface at https://foursquare.com/developers/home
+
+3. On the new project's settings page, find OAuth Authentication
+
+4. into redirect URL type the following: https://www.example.com 
+   then click on save
+
+5. Copy client ID and paste it into Authenticate.html text field
+
+6. Click on Connect
+
+7. Foursquare asks if you want to connect this app to your profile, click Allow
+
+8. You are redirected to example.com, now copy the token after example.com/?code=
+   from the URL bar
+
+9. Paste this into terminal as mentioned in step #0 as the terminal asks for "access code"
+10. Paste your project's Client ID and paste it into the terminal when asked
+11. Do the same with Client Secret
+
+12. Wait a bit. The following should appear in 2 minutes: "KML generation completed..."
+
+13. open https://www.google.com/maps/d/u/0/?hl=en and create your new map
+14. click on "New Layer", then click on `Import` and browse the `.kml` file located in the repo
+15. the rest is straightforward - you can set a few map styles and you can set the venue labels to be shown on Google My Maps
