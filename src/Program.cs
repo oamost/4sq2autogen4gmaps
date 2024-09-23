@@ -157,26 +157,39 @@ class Program
             currentOffset += queryLimit;
         }
         
-        // Generating file:
-        //
-        string content = string.Empty;        
-        foreach (string entry in kmlEntries)
-            content += entry;
+        // Generating files in chunks of 2000 entries:
+        int entriesPerFile = 2000;
+        int totalFiles = (kmlEntries.Count + entriesPerFile - 1) / entriesPerFile; // Calculate the number of files needed
 
-        string document = string.Empty;
-        string target = "4sq2autogen4gmaps_{0}.kml";
-        string timeStamp = DateTime.Now.ToString("yyyy_MM_dd");
-        
-        kmlHeader = string.Format(kmlHeader,timeStamp);
-        target = string.Format(target, timeStamp);
+        for (int fileIndex = 0; fileIndex < totalFiles; fileIndex++)
+        {
+            string content = string.Empty;
+            
+            // Get the range of entries for this file
+            int start = fileIndex * entriesPerFile;
+            int count = Math.Min(entriesPerFile, kmlEntries.Count - start);
+            List<string> currentEntries = kmlEntries.GetRange(start, count);
 
-        document += kmlHeader;
-        document += content;
-        document += kmlFooter;
+            // Concatenate the entries into the KML content
+            foreach (string entry in currentEntries)
+                content += entry;
 
-        File.WriteAllText(target, document);
+            // Prepare the document for this file
+            string document = string.Empty;
+            string target = $"4sq2autogen4gmaps_{DateTime.Now:yyyy_MM_dd}_{fileIndex + 1}.kml";
+            
+            // Add header, content, and footer to the KML file
+            document += kmlHeader;
+            document += content;
+            document += kmlFooter;
 
-        Console.WriteLine("KML generation succeeded, press any key to exit...");
+            // Write the file to the disk
+            File.WriteAllText(target, document);
+
+            Console.WriteLine($"KML file '{target}' generated successfully.");
+        }
+
+        Console.WriteLine("KML generation completed, press any key to exit...");
         Console.Read();
     }
 }
