@@ -2,3 +2,7 @@ bin/
 obj/
 .vscode/
 *.kml
+*.so
+*.dll
+*.pdb
+build_output
