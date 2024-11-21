@@ -16,9 +16,11 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        runtime: [linux-x64, win-x64, osx-x64]
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       
@@ -27,6 +29,18 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
+
+    - name: Build self-contained executable
+      run: dotnet build --no-restore -o build_output -r ${{ matrix.runtime }} --self-contained
+
+    - name: Compress build output
+      run: |
+        zip -r build_output_${{ matrix.runtime }}.zip build_output
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
       
-    - name: Build
-      run: dotnet build --no-restore
+      with:
+        name: 4sq2autogen4gmaps-${{ matrix.runtime }}
+        path: 4sq2autogen4gmaps_${{ matrix.runtime }}.zip
+        
