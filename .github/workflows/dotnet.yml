@@ -48,8 +48,13 @@ jobs:
 
     - name: Compress build output
       run: |
-      
-        zip -r 4sq2autogen4gmaps_${{ matrix.runtime }}.zip build_output
+          if [[ ${{ matrix.os }} == 'windows-latest' ]]; then
+            Compress-Archive -Path build_output\* -DestinationPath 4sq2autogen4gmaps_${{ matrix.runtime }}.zip
+          else
+            zip -r 4sq2autogen4gmaps_${{ matrix.runtime }}.zip build_output
+          fi
+          
+      shell: bash
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
