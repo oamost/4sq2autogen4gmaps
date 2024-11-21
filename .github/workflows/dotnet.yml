@@ -49,7 +49,7 @@ jobs:
     - name: Compress build output
       run: |
           if [[ ${{ matrix.os }} == 'windows-latest' ]]; then
-            Compress-Archive -Path build_output\* -DestinationPath 4sq2autogen4gmaps_${{ matrix.runtime }}.zip
+            powershell.exe -Command "Compress-Archive -Path build_output\* -DestinationPath 4sq2autogen4gmaps_${{ matrix.runtime }}.zip"
           else
             zip -r 4sq2autogen4gmaps_${{ matrix.runtime }}.zip build_output
           fi
