@@ -1,4 +1,4 @@
-# Samples
+# Screenshots
 
 ## Utility usage:
 
@@ -12,36 +12,35 @@
 
 ![image](https://github.com/user-attachments/assets/5f9aea1b-7eee-4d4d-bbc4-c169d38df148)
 
-# How-to use it?
+# How do I use it?
 
-You will need dotnet-sdk-bin for building the project.
-You can build it with dotnet restore && dotnet run
+1. Download `authenticate.zip` and `yourplatform_x64.zip` from the releases page.
+   Unzip them, and launch `Authenticate.html` in the browser, thus `./4sq2autogen4gmaps` (.exe, or .out executable) in your terminal.
+  
+3. In your browser, go to `https://foursquare.com/developers/home` to create a new project after logging into the interface.
 
-1. Start the built 4sq2autogen4gmaps utility and open Authenticate.html from src in your browser
-   You will paste the "access code" from step 1-7 here
-   
-2. Create new project after logged into fsq/developer interface at https://foursquare.com/developers/home
+4. On the new project's settings page, find OAuth Authentication.
 
-3. On the new project's settings page, find OAuth Authentication
+5. Find the redirect URL entry, and type the following into it: https://www.example.com 
+   then click on save.
 
-4. into redirect URL type the following: https://www.example.com 
-   then click on save
+6. Copy the client ID and paste it into the Authenticate.html text field.
 
-5. Copy client ID and paste it into Authenticate.html text field
-
-6. Click on Connect
-
-7. Foursquare asks if you want to connect this app to your profile, click Allow
+7. Click on Connect. Foursquare asks if you want to connect this app to your profile, click Allow.
 
 8. You are redirected to example.com, now copy the token after example.com/?code=
-   from the URL bar
+   from the URL bar. Only the part after the equality sign.
+   
+9. Paste this into your terminal where you have the launched ./4sq2autogen4gmaps waiting for the `access code`.
 
-9. Paste this into terminal as mentioned in step #0 as the terminal asks for "access code"
-10. Paste your project's Client ID and paste it into the terminal when asked
-11. Do the same with Client Secret
+10. Paste your project's Client ID and paste it into the terminal when asked.
+
+11. Do the same with Client Secret.
 
 12. Wait a bit. The following should appear in 2 minutes: "KML generation completed..."
 
-13. open https://www.google.com/maps/d/u/0/?hl=en and create your new map
-14. click on "New Layer", then click on `Import` and browse the `.kml` file located in the repo
-15. the rest is straightforward - you can set a few map styles and you can set the venue labels to be shown on Google My Maps
+13. Open https://www.google.com/maps/d/u/0/?hl=en and create your new map.
+
+14. click on "New Layer", then click on `Import` and browse the `.kml` file located in the repo.
+
+15. the rest is straightforward - you can set a few map styles and you can set the venue labels to be shown on Google My Maps.
