@@ -35,7 +35,7 @@ jobs:
 
     - name: Compress build output
       run: |
-        zip -r build_output_${{ matrix.runtime }}.zip build_output
+        zip -r 4sq2autogen4gmaps_${{ matrix.runtime }}.zip build_output
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
