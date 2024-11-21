@@ -1,3 +1,7 @@
+# Usage tutorial video:
+
+https://www.youtube.com/watch?v=jsegDeQcucc
+
 # Screenshots
 
 ## Utility usage:
