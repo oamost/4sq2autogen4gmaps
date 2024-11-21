@@ -5,26 +5,39 @@ name: .NET
 
 on:
   push:
+  
     branches: [ "master" ]
   pull_request:
+  
     branches: [ "master" ]
 
 jobs:
   build:
+  
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        runtime: [linux-x64, win-x64, osx-x64]
+        include:
+        
+          - os: ubuntu-latest
+            runtime: linux-x64
+            
+          - os: windows-latest
+            runtime: win-x64
+            
+          - os: macos-latest
+            runtime: osx-x64
 
     steps:
+    
     - uses: actions/checkout@v4
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       
       with:
+      
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
@@ -35,12 +48,14 @@ jobs:
 
     - name: Compress build output
       run: |
+      
         zip -r 4sq2autogen4gmaps_${{ matrix.runtime }}.zip build_output
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       
       with:
+      
         name: 4sq2autogen4gmaps-${{ matrix.runtime }}
         path: 4sq2autogen4gmaps_${{ matrix.runtime }}.zip
         
